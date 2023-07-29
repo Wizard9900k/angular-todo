@@ -1,0 +1,47 @@
+
+.app-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+  }
+
+  .padding-left{
+    padding-left: 5%;
+}
+  
+  .add-button {
+    position: fixed;
+    bottom: 24px;  
+    right: 24px;
+  }
+.listItem {
+    width: 98,6%;
+    margin: 0.7%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.mat-icon-custom{
+    font-size:10px !important;  
+    width: 15px;              
+    height:15px;               
+
+}
+
+.align{
+  text-align: justify;
+}
+
+.card-container {
+  /*  not needed styles to reflect it */ 
+  background: blue;
+  padding: 10px;
+  color: white;
+  width: 500px;
+
+  /* needed styles below */
+  display: flex;
+  justify-content: space-between;
+}
+
+  

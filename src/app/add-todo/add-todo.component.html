@@ -1,0 +1,21 @@
+<!-- add-todo.component.html -->
+
+<mat-toolbar color="primary">
+    <button mat-icon-button routerLink="/todo-list">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <span class="app-title">Add Todo</span>
+  </mat-toolbar>
+  
+  <div class="container">
+    <mat-form-field>
+      <input matInput placeholder="Title" [(ngModel)]="newTodo.title">
+    </mat-form-field>
+  
+    <mat-form-field>
+      <textarea matInput placeholder="Description" [(ngModel)]="newTodo.description" rows="5"></textarea>
+    </mat-form-field>
+  
+    <button mat-raised-button color="accent" (click)="addTodo()">Add Todo</button>
+  </div>
+  

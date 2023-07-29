@@ -1,0 +1,42 @@
+<mat-toolbar color="primary">
+    <span class="app-title" routerLink="/">Todo-List</span>
+    <span class="app-title" class="padding-left" routerLink="/notes">Notes</span>
+</mat-toolbar>
+
+<div class="notes-container">
+    <div class="notes-list">
+      <div class="note-item" *ngFor="let note of notes">
+        <div class="note-header">
+          <div class="hamburger-menu" (click)="deleteNote(note)">
+            &#9776;
+          </div>
+          <div class="note-title" (click)="selectNote(note)" >
+            {{note.title}}
+          </div>
+        </div>
+      </div>
+      <div class="add-note-btn">
+        <button mat-raised-button color="primary" (click)="addNote()">Add New Note</button>
+      </div>
+    </div>
+  
+    
+
+ 
+    <div class="note-editor" *ngIf="currentNote">
+      <mat-form-field class="note-title">
+        <input matInput  [(ngModel)]="currentNote.title">
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <textarea matInput name="ddfs" rows="1000" [(ngModel)]="currentNote.content"></textarea>
+      </mat-form-field>
+  
+    </div>
+    <div class="note-editor" *ngIf="!currentNote">
+        <h2 class="center">No note selected</h2>
+    
+      </div>
+  
+  </div>
+
+  

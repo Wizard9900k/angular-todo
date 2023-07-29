@@ -1,0 +1,73 @@
+.notes-container {
+    display: flex;
+    height: 100vh;
+  }
+
+.padding-left{
+    padding-left: 5%;
+}
+
+  .app-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+  }
+
+  .center {
+    text-align: center;
+    padding-top: 20%;
+    
+  }
+  
+  .notes-list {
+    flex: 1;
+    padding: 16px;
+    background-color: #f1f1f1;
+    overflow-y: auto;
+  }
+  
+  .note-item {
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .note-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    cursor: pointer;
+  }
+  
+  .hamburger-menu {
+    font-size: 18px;
+    padding: 8px;
+  }
+  
+  .note-title {
+    flex: 1;
+    padding-left: 16px;
+  }
+  
+  .add-note-btn {
+    display: flex;
+    justify-content: center;
+    padding-top: 16px;
+  }
+
+  .example-full-width {
+    width: 98%;
+    height: 98%;
+    padding: 1%;
+  }
+  
+  .note-editor {
+    flex: 3;
+    padding: 16px;
+  }
+  
+  .note-title {
+    width: 98%;
+    padding: 1%;
+  }
+  
+  

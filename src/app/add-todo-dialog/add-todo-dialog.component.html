@@ -1,0 +1,20 @@
+
+
+<div class="container">
+    <mat-form-field>
+      <input matInput placeholder="Title" [(ngModel)]="newTodo.title" (keyup.enter)="addTodo()">
+    </mat-form-field>
+  <br>
+    <mat-form-field>
+      <textarea matInput placeholder="Description" [(ngModel)]="newTodo.description" rows="5" (keyup.enter)="addTodo()" ></textarea>
+    </mat-form-field>
+  <br>
+      <input  type="date" [(ngModel)]="newTodo.date" (keyup.enter)="addTodo()"> 
+   
+    <br>
+  <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-raised-button mat-dialog-close color="accent" (click)="addTodo()">Add Todo</button>
+    
+  </div>
+  
+

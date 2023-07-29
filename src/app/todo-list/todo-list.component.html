@@ -1,0 +1,77 @@
+<!-- todo-list.component.html -->
+
+<mat-toolbar color="primary">
+    <span class="app-title" routerLink="/">Todo-List</span>
+    <span class="app-title" class="padding-left" routerLink="/notes">Notes</span>
+</mat-toolbar>
+  
+  
+  <!--
+  <button mat-fab class="add-button" color="accent" routerLink="/add-todo">
+    <mat-icon>add</mat-icon>
+  </button>
+  -->
+  
+  <mat-card class="listItem" >
+    <mat-card-header>
+        <mat-card-title (click)="openDialog()">Todo</mat-card-title>
+      </mat-card-header>
+    <p class="listItem" *ngIf="todos.length == 0" (click)="openDialog()"> Press + to add Todos</p>
+    
+   <table>
+        <tr  *ngFor="let todo of todos">
+            <td><mat-checkbox (click)="isCompleted(todo)">{{ todo.title }}</mat-checkbox></td>
+            <td>{{ todo.description }}</td>
+
+            <td *ngIf="bool_today">
+                {{ todo.date }}
+                
+            </td>
+            
+            <td align="end"><button align="end"mat-icon-button class="mat-icon-custom"  color="warn" (click)="deleteTodo(todo)">
+                <mat-icon align="end">delete</mat-icon>
+            </button></td>
+            
+        </tr>
+
+   </table>
+   
+    </mat-card>
+
+ <div *ngIf="completedItems.length != 0">
+    <br><br>
+    
+    <mat-card class="listItem" >
+        <mat-card-header>
+            <mat-card-title-group>
+                <mat-card-title>
+                    Completed
+                </mat-card-title>  
+            </mat-card-title-group>
+            <div fxFlex></div>
+            <button mat-button (click)="deleteAllCompleted()" color="warn">Delete All</button>
+        </mat-card-header> 
+            
+        <table>
+             <tr  *ngFor="let todo of completedItems">
+                 <td><mat-checkbox (click)="isNotCompleted(todo)" checked="true">{{ todo.title }}</mat-checkbox></td>
+                 <td>{{ todo.description }}</td>
+                
+                 <td>
+                    
+                    <button mat-icon-button class="mat-icon-custom" color="warn" (click)="deleteCompleted(todo)">
+                     <mat-icon>delete</mat-icon>
+                 </button>
+                 
+                </td>
+             </tr>
+        </table>
+         </mat-card>
+</div> 
+<button mat-fab extended class="add-button" (click)="openDialog()" color="accent">
+    <mat-icon>add</mat-icon>
+    Add Todo
+  </button>
+
+ 
+  
