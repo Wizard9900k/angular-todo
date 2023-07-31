@@ -4,13 +4,18 @@
 </mat-toolbar>
 
 <div class="notes-container">
-    <div class="notes-list">
-      <div class="note-item" *ngFor="let note of notes">
+    <div  cdkDropList class="notes-list"  (cdkDropListDropped) = "drop($event)">
+      <div class="note-item" *ngFor="let note of notes" cdkDrag>
+        <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
         <div class="note-header">
-          <div class="hamburger-menu" (click)="deleteNote(note)">
+          <div class="hamburger-menu"  [matMenuTriggerFor]="menu">
             &#9776;
           </div>
-          <div class="note-title" (click)="selectNote(note)" >
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="deleteNote(note)">Delete</button>
+            
+          </mat-menu>
+          <div class="note-title" (click)="selectNote(note)">
             {{note.title}}
           </div>
         </div>
@@ -39,4 +44,9 @@
   
   </div>
 
-  
+  <div cdkDropList (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let note of notes" cdkDrag>
+      <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+      {{note.title}}
+    </div>
+  </div>

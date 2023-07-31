@@ -18,6 +18,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon'; 
 import {MatCardModule} from '@angular/material/card'; 
 import {MatDividerModule} from '@angular/material/divider'; 
+import {CdkDragDrop, CdkDropList, CdkDrag, moveItemInArray} from '@angular/cdk/drag-drop';
 
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { AddTodoComponent } from './add-todo/add-todo.component';
@@ -26,6 +27,9 @@ import {MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from '@angula
 import { AddTodoDialogComponent } from './add-todo-dialog/add-todo-dialog.component';
 import { NotesComponent } from './notes/notes.component';
 import { NotesService } from './notes.service';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -56,7 +60,14 @@ import { NotesService } from './notes.service';
     MatCardModule,
     MatDividerModule,
     MatDialogModule,
-    
+    CdkDropList,
+    CdkDrag,
+    MatFormFieldModule,
+    MatInputModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    MatButtonModule,
+    MatMenuModule
     
   ],
   providers: [TodoService],

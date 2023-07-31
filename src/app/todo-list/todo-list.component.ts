@@ -5,6 +5,8 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AddTodoDialogComponent } from '../add-todo-dialog/add-todo-dialog.component';
 import {formatDate} from '@angular/common';
 import { DatePipe } from '@angular/common';
+import { CdkDragDrop, CdkDropList, CdkDrag, moveItemInArray } from '@angular/cdk/drag-drop';
+import {MatDatepickerModule} from '@angular/material/datepicker'; 
 
 
 interface Todo {
@@ -35,6 +37,8 @@ export class TodoListComponent implements OnInit {
   completedItems: Completed[] = [];
   today = new Date();
   bool_today: boolean = true;
+  sorted: boolean = true;
+  onOrOff: string = "warn";
 
   constructor(private todoService: TodoService, private dialog: MatDialog)
    {}
@@ -42,7 +46,10 @@ export class TodoListComponent implements OnInit {
   ngOnInit() {
     this.todoService.getTodos().subscribe(todos => {
       this.todos = todos;
-      this.sortTodosByDueDate()
+      if (this.sorted) {
+        this.sortTodosByDueDate()
+      }
+      
       this.adjustDate(this.todos)
     });
 
@@ -83,7 +90,7 @@ export class TodoListComponent implements OnInit {
     let dialogRef = this.dialog.open(AddTodoDialogComponent);
   
     dialogRef.backdropClick().subscribe(() => {
-      // Close the dialog
+      
       dialogRef.close();
     })
   
@@ -114,9 +121,7 @@ export class TodoListComponent implements OnInit {
 
 
   sortTodosByDueDate() {
-    // Use the JavaScript 'sort()' method to sort the todos by their due date.
     this.todos.sort((a, b) => {
-      // Assuming 'todo.date' is a valid date in string format (e.g., 'YYYY-MM-DD').
       const dateA = new Date(a.date);
       const dateB = new Date(b.date);
       return dateA.getTime() - dateB.getTime();
@@ -139,5 +144,23 @@ export class TodoListComponent implements OnInit {
       return date;
     }
   }
-  
+
+ changeSort() {
+  this.sorted = !this.sorted;
+  if (this.sorted) {
+    this.sortTodosByDueDate()
+    this.onOrOff = "warn";
+  }
+  else {
+    this.onOrOff = "grey";
+  }
+  console.log(this.sorted);
+ }
+
+ drop(event: CdkDragDrop<string[]>) {
+  moveItemInArray(this.todos, event.previousIndex, event.currentIndex);
+  this.sorted = false;
+  this.onOrOff = "grey";
 }
+}
+

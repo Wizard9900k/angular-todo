@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 interface Note {
   title: string;
   content: string;
+  selected: string;
 }
 
 @Injectable({
